@@ -1,0 +1,23 @@
+name: Publish signed TOX 0.2.9.11 OTA
+on:
+  push:
+    branches: [publish-tox-0.2.9.11]
+    paths: [".github/workflows/publish-tox.yml"]
+permissions:
+  contents: write
+concurrency:
+  group: tox-ota-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify packages and publish to OTA channels
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: bash publish/publish.sh
