@@ -1,4 +1,4 @@
-name: Publish signed TOX 0.2.9.11 OTA
+name: Release signed TOX 0.2.9.11 OTA
 on:
   push:
     branches: [publish-tox-0.2.9.11]

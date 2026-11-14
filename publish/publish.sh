@@ -62,7 +62,7 @@ for profile in "${profiles[@]}"; do
     dir="publish/$profile"
     tag="ota-$profile"
     expected=$(sha256sum "$dir/$asset" | cut -d ' ' -f 1)
-    digest=$(gh release view "$tag" --json assets --jq ".assets[] | select(.name == \"$asset\") | .digest")
+    digest=$(gh api "repos/$GH_REPO/releases/tags/$tag" --jq ".assets[] | select(.name == \"$asset\") | .digest")
     if [[ -z "$digest" ]]; then
         gh release upload "$tag" "$dir/$asset"
     else
