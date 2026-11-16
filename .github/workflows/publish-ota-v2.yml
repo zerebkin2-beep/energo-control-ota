@@ -1,0 +1,22 @@
+name: Publish signed ECM OTA v2
+on:
+  push:
+    branches: [publish-ota-v2-0.2.9.18]
+    paths: [".github/workflows/publish-ota-v2.yml"]
+permissions:
+  contents: write
+concurrency:
+  group: tox-ota-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify and publish ECM 0.2.9.18 to both OTA v2 channels
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: bash publish/publish.sh
