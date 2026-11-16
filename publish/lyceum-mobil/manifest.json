@@ -1,0 +1,8 @@
+{
+  "board": "esp32c3",
+  "version": "TOX Reliability 0.2.9.19",
+  "size": 1233424,
+  "sha256": "72cec8f98f9b41859fe716d6abbb7408a8b11aa74cffb16d59b342fce4b6746f",
+  "url": "https://github.com/zerebkin2-beep/energo-control-ota/releases/download/ota-lyceum-mobil-v2/firmware-0.2.9.19.bin",
+  "signature": "304502201a16806ba2b9d94a66424850049f41682d79d03a76cad380fbce24ed4f6b25ef022100ecc3d9b03ca6cab10771ec5db7b2abbb50af2133aae32f2ca04bac2a7306bc27"
+}
