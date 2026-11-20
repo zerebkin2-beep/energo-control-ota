@@ -1,0 +1,27 @@
+name: Publish ECM 0.3.11 OTA
+on:
+  push:
+    branches: [publish-ecm-0.3.11-ota]
+    paths: ['.github/workflows/publish-ecm-0.3.11.yml']
+permissions:
+  contents: write
+concurrency:
+  group: ecm-0.3.11-ota
+  cancel-in-progress: false
+jobs:
+  publish:
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [apartment, lyceum-mobil]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Upload and verify the signed OTA release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PROFILE: ${{ matrix.profile }}
+        run: bash "publish/ecm-0.3.11/$PROFILE/publish.sh"
