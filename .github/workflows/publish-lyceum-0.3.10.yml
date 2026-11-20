@@ -1,0 +1,22 @@
+name: Publish ECM LYCEUM 0.3.10 OTA
+on:
+  push:
+    branches: [publish-lyceum-0.3.10-ota]
+    paths: ['.github/workflows/publish-lyceum-0.3.10.yml']
+permissions:
+  contents: write
+concurrency:
+  group: ecm-lyceum-ota-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Publish and verify signed lyceum OTA assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: bash publish/lyceum-0.3.10/publish.sh
