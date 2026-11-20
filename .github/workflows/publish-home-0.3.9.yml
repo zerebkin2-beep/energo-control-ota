@@ -1,0 +1,22 @@
+name: Publish ECM HOME 0.3.9 OTA
+on:
+  push:
+    branches: [publish-home-0.3.9-ota]
+    paths: ['.github/workflows/publish-home-0.3.9.yml']
+permissions:
+  contents: write
+concurrency:
+  group: ecm-home-ota-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Upload and verify the signed home OTA assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: bash publish/home-0.3.9/publish.sh
