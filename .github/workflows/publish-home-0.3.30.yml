@@ -73,6 +73,11 @@ jobs:
           mkdir -p /tmp/activate-ota
           cp ota-staging/manifest-0.3.30.json /tmp/activate-ota/manifest.json
           gh release upload ota-apartment-v2 /tmp/activate-ota/manifest.json --repo zerebkin2-beep/energo-control-ota --clobber
+      - name: Update HOME release title
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release edit ota-apartment-v2 --repo zerebkin2-beep/energo-control-ota --title 'ECM Reliability 0.3.30 — квартира (OTA v2)'
       - name: Verify release artifacts after publishing
         env:
           GH_TOKEN: ${{ github.token }}
