@@ -1,0 +1,8 @@
+{
+  "board": "esp32c3",
+  "version": "TOX Reliability 0.3.36",
+  "size": 1239568,
+  "sha256": "c84328fd9738bfdbc34a9c2eedd166b97f18889c80f1defcc2cd649030de6f03",
+  "url": "https://github.com/zerebkin2-beep/energo-control-ota/releases/download/ota-apartment-v2/firmware-0.3.36.bin",
+  "signature": "3044022038104ef21dece9e62094fd75d716df9713742047ad2d0b19138c82c0b7767bdf02205d9b8eef12132bb8cb3d089b786f491e9fd8f7a86e22a062fdc7fe83303c188c"
+}
