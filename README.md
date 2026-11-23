@@ -1,16 +1,10 @@
 # EnergyControl OTA releases
 
-Signed ESP32-C3 firmware releases for EnergyControl.
+Signed ESP32-C3 firmware releases for EnergyControl. The HOME and LYCEUM channels use separate OTA manifests. Each release requires a tested BIN, its SHA-256 manifest, and a signature matching the public key installed on the device.
 
-**No verified installable release published in this operation.** Each release requires compiled and tested `firmware.bin`, SHA-256 manifest, and signature from the private key matching the public key already installed on the device.
+## HOME 0.3.29 candidate
 
-Separate targets: `ota-apartment` and `ota-lyceum-mobil`. Never use an unsigned build for unattended remote updates. The public lyceum website is not modified.
-
-
-## HOME 0.3.28 candidate
-
-- Target: ESP32-C3, `ota-apartment-v2`.
-- Four Telegram notification styles and separate owner/group settings for power events, with an in-bot preview.
-- Local build: 1,257,392 bytes. Nine host test suites passed. Hardware OTA has not been tested.
-- The HOME Apps Script has matching connection-alert templates. Server style selection is configured separately until firmware-to-server synchronization is available.
-- Status: unsigned candidate. The existing OTA channel and release assets have not been updated.
+- ESP32-C3 target, `ota-apartment-v2`. BIN size: 1,257,600 bytes. Nine host test suites passed.
+- Four Telegram styles with separate settings for the owner and group. The authenticated heartbeat synchronizes both styles with the HOME connection-alert server.
+- HOME Apps Script version 32 is deployed. The production heartbeat handler and connection-alert trigger completed after the update.
+- The candidate is unsigned. End-to-end style synchronization and device OTA still require a device running this candidate. The OTA release assets have not been changed.
